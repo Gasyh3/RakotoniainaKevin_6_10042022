@@ -3,6 +3,7 @@
  */
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const app = express();
 
 /** 
@@ -25,6 +26,8 @@ mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mo
     next();
 });
 
+//Securité en définissant divers en-têtes HTTP
+app.use(helmet());
 
 /**
  * * Exports

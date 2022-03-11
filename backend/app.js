@@ -17,6 +17,9 @@ mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mo
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+//Securité en définissant divers en-têtes HTTP
+app.use(helmet());
+
 /**
  * * Régler les problèmes de CORS
  */
@@ -26,9 +29,6 @@ mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mo
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
-
-//Securité en définissant divers en-têtes HTTP
-app.use(helmet());
 
 /**
  * * Exports

@@ -3,6 +3,7 @@
  */
 const express = require('express');
 const mongoose = require('mongoose');
+const app = express();
 
 /** 
  * * Connexion à la base de données
@@ -13,3 +14,8 @@ mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mo
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+/**
+ * * Exports
+ */
+  module.exports = app;

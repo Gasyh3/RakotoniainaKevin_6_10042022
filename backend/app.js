@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const path = require('path');
+const userRoutes = require('./routes/user');
 const app = express();
 
 /** 
@@ -29,6 +30,14 @@ app.use(helmet());
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+
+app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+/**
+ * * Routes
+ */
+app.use('api/auth', userRoutes);
 
 /**
  * * Exports

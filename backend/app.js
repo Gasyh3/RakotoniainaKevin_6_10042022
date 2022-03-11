@@ -16,6 +16,17 @@ mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mo
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 /**
+ * * Régler les problèmes de CORS
+ */
+ app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
+});
+
+
+/**
  * * Exports
  */
   module.exports = app;

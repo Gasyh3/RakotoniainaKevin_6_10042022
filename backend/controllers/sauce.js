@@ -57,3 +57,12 @@ exports.deleteSauce = (req, res, next) => {
     })
     .catch(error => res.status(500).json({error}));
 };
+
+/**
+ * * Interroger toutes les sauces
+ */
+exports.getAllSauces = (req, res, next) => {
+    Sauce.find()
+    .then(sauces => res.status(200).json({sauces}))
+    .catch(eror => res.status(400).json({error}));
+};

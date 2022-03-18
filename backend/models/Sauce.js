@@ -1,6 +1,7 @@
 /** 
  * * Imports
 */
+const mongoose = require('mongoose');
 
 /** 
  * * Modèle sauce

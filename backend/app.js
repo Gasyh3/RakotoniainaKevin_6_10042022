@@ -1,6 +1,7 @@
 /**
  * * Imports
  */
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -13,9 +14,8 @@ const app = express();
 
 /** 
  * * Connexion à la base de données
- * todo : Améliorer la sécurité au niveau du mot de passes
  */
-mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_LINK}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

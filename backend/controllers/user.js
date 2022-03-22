@@ -1,6 +1,7 @@
 /** 
  * * Imports
 */
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const maskdata = require('maskdata');
 const User = require('../models/User');
@@ -54,7 +55,7 @@ const jwt = require('jsonwebtoken');
               userId: user._id,
               token: jwt.sign(
                 { userId: user._id },
-                'RANDOM_TOKEN_SECRET',
+                process.env.RANDOM_TOKEN_SECRET,
                 { expiresIn: '24h' }
               )
             });

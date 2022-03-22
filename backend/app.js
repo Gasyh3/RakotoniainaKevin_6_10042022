@@ -22,7 +22,9 @@ mongoose.connect('mongodb+srv://gasyh3:tvVHkvFR6R1gQ4Bd@clusterproject6.oq6iy.mo
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 //Securité en définissant divers en-têtes HTTP
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}));
 
 /**
  * * Régler les problèmes de CORS
@@ -40,8 +42,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 /**
  * * Routes
  */
+ app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
-app.use('/api/sauces', sauceRoutes);
 
 /**
  * * Exports

@@ -1,8 +1,15 @@
-// IMPORTS
+/**
+ * * Imports
+ */
 const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
-// CREER UNE SAUCE
+/**
+ * * Créer une sauce
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 exports.createSauce = (req, res, next) => {
 	console.log('Sauce créée :', req.body.sauce);
 	const sauceObject = JSON.parse(req.body.sauce);
@@ -20,7 +27,12 @@ exports.createSauce = (req, res, next) => {
 		}));
 };
 
-// CREER OU SUPPRIMER UN LIKE OU UN DISLIKE
+/**
+ * * Like ou Dislike sur une sauce
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 exports.likeSauce = (req, res, next) => {
 	if (req.body.like === 1) { // J'aime
 		Sauce.updateOne({
@@ -103,7 +115,12 @@ exports.likeSauce = (req, res, next) => {
 	}
 };
 
-// INTERROGER UNE SAUCE
+/**
+ * * Interroger une sauce
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 exports.getOneSauce = (req, res, next) => {
 	Sauce.findOne({
 			_id: req.params.id
@@ -114,7 +131,12 @@ exports.getOneSauce = (req, res, next) => {
 		}));
 };
 
-// MODIFIER UEN SAUCE
+/**
+ * * Modifier une sauce
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 exports.modifySauce = (req, res, next) => {
 	const sauceObject = req.file ? {
 		...JSON.parse(req.body.sauce),
@@ -136,7 +158,12 @@ exports.modifySauce = (req, res, next) => {
 		}));
 };
 
-// EFFACER UNE SAUCE
+/**
+ * * Effacer une sauce
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 exports.deleteSauce = (req, res, next) => {
 	Sauce.findOne({
 			_id: req.params.id
@@ -160,7 +187,12 @@ exports.deleteSauce = (req, res, next) => {
 		}));
 };
 
-// INTERROGER TOUTES LES SAUCES
+/**
+ * * Interroger toutes les sauces
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 exports.getAllSauces = (req, res, next) => {
 	Sauce.find()
 		.then(sauces => res.status(200).json(sauces))
